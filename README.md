@@ -1,96 +1,71 @@
-# Obsidian Sample Plugin
+# Obsidian Vextab
 
-This is a sample plugin for Obsidian (https://obsidian.md).
+This is an [Obsidian](https://obsidian.md) plugin for rendering guitar tablature and music notation using [Vextab](https://vexflow.com/vextab/). From the Vextab creators:
 
-This project uses Typescript to provide type checking and documentation.
-The repo depends on the latest plugin API (obsidian.d.ts) in Typescript Definition format, which contains TSDoc comments describing what it does.
+> VexTab is a language that allows you to easily create, edit, and share standard notation and guitar tablature. Unlike ASCII tab, which is designed for readability, VexTab is designed for writeability. 
 
-**Note:** The Obsidian API is still in early alpha and is subject to change at any time!
+## Installation
+This plugin is pending to be added to the Obsidian Community Plugins list. In the meantime, you can install it manually using one of the following methods:
 
-This sample plugin demonstrates some of the basic functionality the plugin API can do.
-- Changes the default font color to red using `styles.css`.
-- Adds a ribbon icon, which shows a Notice when clicked.
-- Adds a command "Open Sample Modal" which opens a Modal.
-- Adds a plugin setting tab to the settings page.
-- Registers a global click event and output 'click' to the console.
-- Registers a global interval which logs 'setInterval' to the console.
+### Option 1: Install lastest release
+Go to the [latest release](https://github.com/luigman/obsidian-vextab/releases/latest) and download the file that looks like `obsidian-vextab-X.X.X.zip`.
 
-## First time developing plugins?
+Unzip this file in the `.obsidian/plugins/` directory inside your vault. You may need to enable *show hidden files* in your file browser to see this folder.
 
-Quick starting guide for new plugin devs:
+Then restart Obsidian and activate Vextab in the Community Plugin settings
 
-- Check if [someone already developed a plugin for what you want](https://obsidian.md/plugins)! There might be an existing plugin similar enough that you can partner up with.
-- Make a copy of this repo as a template with the "Use this template" button (login to GitHub if you don't see it).
-- Clone your repo to a local development folder. For convenience, you can place this folder in your `.obsidian/plugins/your-plugin-name` folder.
-- Install NodeJS, then run `npm i` in the command line under your repo folder.
-- Run `npm run dev` to compile your plugin from `main.ts` to `main.js`.
-- Make changes to `main.ts` (or create new `.ts` files). Those changes should be automatically compiled into `main.js`.
-- Reload Obsidian to load the new version of your plugin.
-- Enable plugin in settings window.
-- For updates to the Obsidian API run `npm update` in the command line under your repo folder.
-
-## Releasing new releases
-
-- Update your `manifest.json` with your new version number, such as `1.0.1`, and the minimum Obsidian version required for your latest release.
-- Update your `versions.json` file with `"new-plugin-version": "minimum-obsidian-version"` so older versions of Obsidian can download an older version of your plugin that's compatible.
-- Create new GitHub release using your new version number as the "Tag version". Use the exact version number, don't include a prefix `v`. See here for an example: https://github.com/obsidianmd/obsidian-sample-plugin/releases
-- Upload the files `manifest.json`, `main.js`, `styles.css` as binary attachments. Note: The manifest.json file must be in two places, first the root path of your repository and also in the release.
-- Publish the release.
-
-> You can simplify the version bump process by running `npm version patch`, `npm version minor` or `npm version major` after updating `minAppVersion` manually in `manifest.json`.
-> The command will bump version in `manifest.json` and `package.json`, and add the entry for the new version to `versions.json`
-
-## Adding your plugin to the community plugin list
-
-- Check https://github.com/obsidianmd/obsidian-releases/blob/master/plugin-review.md
-- Publish an initial version.
-- Make sure you have a `README.md` file in the root of your repo.
-- Make a pull request at https://github.com/obsidianmd/obsidian-releases to add your plugin.
-
-## How to use
-
-- Clone this repo.
-- `npm i` or `yarn` to install dependencies
-- `npm run dev` to start compilation in watch mode.
-
-## Manually installing the plugin
-
-- Copy over `main.js`, `styles.css`, `manifest.json` to your vault `VaultFolder/.obsidian/plugins/your-plugin-id/`.
-
-## Improve code quality with eslint (optional)
-- [ESLint](https://eslint.org/) is a tool that analyzes your code to quickly find problems. You can run ESLint against your plugin to find common bugs and ways to improve your code. 
-- To use eslint with this project, make sure to install eslint from terminal:
-  - `npm install -g eslint`
-- To use eslint to analyze this project use this command:
-  - `eslint main.ts`
-  - eslint will then create a report with suggestions for code improvement by file and line number.
-- If your source code is in a folder, such as `src`, you can use eslint with this command to analyze all files in that folder:
-  - `eslint .\src\`
-
-## Funding URL
-
-You can include funding URLs where people who use your plugin can financially support it.
-
-The simple way is to set the `fundingUrl` field to your link in your `manifest.json` file:
-
-```json
-{
-    "fundingUrl": "https://buymeacoffee.com"
-}
+### Option 2: Manual build
+Go to `.obsidian/plugins/` and run the following commands:
 ```
-
-If you have multiple URLs, you can also do:
-
-```json
-{
-    "fundingUrl": {
-        "Buy Me a Coffee": "https://buymeacoffee.com",
-        "GitHub Sponsor": "https://github.com/sponsors",
-        "Patreon": "https://www.patreon.com/"
-    }
-}
+git clone https://github.com/luigman/obsidian-vextab.git
+cd obsidian-vextab
+npm run deploy
 ```
+Then restart Obsidian and activate Vextab in the Community Plugin settings
 
-## API Documentation
+## Getting started
+To render your first tab, create a new `vextab` code block and enter your notation. For example, this:
+````
+```vextab
+tabstave notation=true
+notes 4-5-6/3 ## | 5-4-2/3 2/2
+```
+````
 
-See https://github.com/obsidianmd/obsidian-api
+will be rendered to this:
+
+![example1](./images/example1.png)
+
+You can use either the `vextab` or `tab` keywords to create a vextab code block.
+
+### Vextab tutorial
+Check out the [Vextab tutorial](https://vexflow.com/vextab/tutorial.html) for more examples and a guide on how to write vextab
+
+### Quicktab
+This plugin also defines a shorthand notation for creating vextab, which is useful for jotting down quick ideas, especially on mobile. The shorthand notation will be applied to `quicktab` code blocks and modifies your notation in the following way:
+- `tabstave` is inferred on the first line and a new tabstave is inserted after any double-newline
+- if a line does not start with `notes`, `text`, or `options`, it is inferred to contain notes.
+
+For example, this:
+````
+```quicktab
+4-5-6b7/3 10/4 | 5-4-2/3 2/2
+
+6-7b9b7/3 7/4 | 9-8-7-6/2
+```
+````
+gets converted to this
+````
+```tab
+tabstave
+notes 4-5-6b7/3 10/4 | 5-4-2/3 2/2
+
+tabstave
+notes 6-7b9b7/3 7/4 | 9-8-7-6/2
+```
+````
+and results in the following image:
+
+![example-quicktab](./images/example-quicktab.png)
+
+You can toggle whether to include notation in quicktab in the Vextab plugin settings.
