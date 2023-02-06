@@ -1,6 +1,5 @@
 import { App, Platform, Plugin, PluginSettingTab, Setting } from 'obsidian';
 import {VexTab, Artist, Vex} from './vextab-dist/main.prod';
-import './styles.css'
 
 interface ObsidianVextabSettings {
 	scale: string;
