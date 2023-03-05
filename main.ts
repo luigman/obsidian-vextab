@@ -83,11 +83,8 @@ export default class ObsidianVextab extends Plugin {
 		// Add edit button for mobile, since the default one is invisible
 		if (Platform.isMobile) {
 			const editButton = document.createElement('span');
-			editButton.style.float = "right"
-			editButton.style.paddingRight = "5px"
-			editButton.style.color = "#808080"
-			editButton.style.fontFamily = "Inter"
 			editButton.appendChild(document.createTextNode("Edit"))
+			editButton.classList.add("edit-button");
 			element.appendChild(editButton)
 		}
 
