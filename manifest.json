@@ -1,7 +1,7 @@
 {
 	"id": "vextab",
 	"name": "Vextab",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"minAppVersion": "0.15.0",
 	"description": "An Obsidian plugin for rendering guitar tablature and music notation using Vextab.",
 	"author": "Luis Guzman",
