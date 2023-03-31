@@ -5,16 +5,19 @@ This is an [Obsidian](https://obsidian.md) plugin for rendering guitar tablature
 > VexTab is a language that allows you to easily create, edit, and share standard notation and guitar tablature. Unlike ASCII tab, which is designed for readability, VexTab is designed for writeability. 
 
 ## Installation
-This plugin is pending to be added to the Obsidian Community Plugins list. In the meantime, you can install it manually using one of the following methods:
+### Option 1: Install in Obsidian (recommended)
+The recommended way to install this plugin is through the Obsidian Community Plugins browser. To do so, open the settings in Obsidian and go to Community Plugins->Browse, then search for "Vextab". Click "install" and "enable" to enable the plugin.
 
-### Option 1: Install lastest release
+Alternatively, you can install it manually using one of the following methods:
+
+### Option 2: Install lastest release
 Go to the [latest release](https://github.com/luigman/obsidian-vextab/releases/latest) and download the file that looks like `obsidian-vextab-X.X.X.zip`.
 
 Unzip this file in the `.obsidian/plugins/` directory inside your vault. You may need to enable *show hidden files* in your file browser to see this folder.
 
 Then restart Obsidian and activate Vextab in the Community Plugin settings
 
-### Option 2: Manual build
+### Option 3: Manual build
 Go to `.obsidian/plugins/` and run the following commands:
 ```
 git clone https://github.com/luigman/obsidian-vextab.git
