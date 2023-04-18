@@ -72,3 +72,6 @@ and results in the following image:
 ![example-quicktab](./images/example-quicktab.png)
 
 You can toggle whether to include notation in quicktab in the Vextab plugin settings.
+
+## Troubleshooting
+There is a known incompatibility with the Scales and Chords plugin, since they both use `tab` code blocks. For now, ensure that only one of these plugins is enabled at a time. A future version of this plugin will include the option to disable `tab` code blocks in favor of using `vextab`.
