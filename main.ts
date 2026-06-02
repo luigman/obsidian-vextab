@@ -72,7 +72,7 @@ export default class ObsidianVextab extends Plugin {
 		// Append default options to the first line
 		source = [defaultString, source].join("\n")
 		// Double newlines are assumed to be new tabstaves
-		source = source.replace("\n\n", `\n\n${defaultString}\n`)
+		source = source.replace(/\n\n/g, `\n\n${defaultString}\n`)
 
 		this.renderVextab(source, element)
 	}
